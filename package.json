@@ -1,16 +1,25 @@
 {
-  "name": "GoogleClassroom",
+  "name": "google-classroom",
   "version": "1.0.0",
-  "description": "",
+  "description": "A nodejs wrapper for easier access to Google Classroom",
   "main": "index.js",
-  "dependencies": {
-    "superagent": "^3.8.1"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cthuluhoop123/node-google-classroom.git"
+  },
+  "keywords": [
+    "nodejs",
+    "google",
+    "google",
+    "classroom"
+  ],
+  "author": "cthuluhoop123",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cthuluhoop123/node-google-classroom/issues"
+  },
+  "homepage": "https://github.com/cthuluhoop123/node-google-classroom#readme"
 }
