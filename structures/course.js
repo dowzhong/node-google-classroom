@@ -1,5 +1,6 @@
 const request = require('superagent')
-const courseWork = require('./courseWork')
+const courseWork = require('./courseWork.js')
+const student = require('./student.js')
 
 class course{
   constructor(client, obj){
@@ -121,13 +122,15 @@ class course{
     let self = this
     return new Promise((resolve, reject) =>{
       request
-      .put(`https://classroom.googleapis.com/v1/clients/${self.id}`)
+      .patch(`https://classroom.googleapis.com/v1/courses/${self.id}`)
       .set('Authorization', `Bearer ${self.client.accessToken}`)
       .type('json')
+      .query({
+        updateMask: 'description'
+      })
       .send({
         description: description,
-        descriptionHeading: self.descriptionHeading,
-        name: self.name
+        id: self.id
       })
       .end((err, res) =>{
         if(err) reject(err.stack);
@@ -140,18 +143,64 @@ class course{
     let self = this
     return new Promise((resolve, reject) =>{
       request
-      .put(`https://classroom.googleapis.com/v1/clients/${self.id}`)
+      .patch(`https://classroom.googleapis.com/v1/courses/${self.id}`)
       .set('Authorization', `Bearer ${self.client.accessToken}`)
       .type('json')
+      .query({
+        updateMask: 'descriptionHeading'
+      })
       .send({
-        description: self.description,
-        name: self.name,
-        descriptionHeading: heading
+        descriptionHeading: heading,
+        id: self.id
       })
       .end((err, res) =>{
         if(err) reject(err.stack);
         resolve(res.body)
       })
+    })
+  }
+
+  getStudents(){
+    let self = this
+    return new Promise((resolve, reject) =>{
+      request
+        .get(`https://classroom.googleapis.com/v1/courses/${self.id}/students`)
+        .set('Authorization', `Bearer ${self.client.accessToken}`)
+        .type('json')
+        .end((err, res) =>{
+          if(err) reject(err.stack);
+          if(res.body.students.length == 1){
+            resolve(new student(self.client, res.body.students[0]))
+          }else{
+            let array = []
+            for(let i = 0; i < res.body.students.length; i++){
+              array.push(new student(self.client, res.body.students[i]))
+            }
+            resolve(array)
+          }
+        })
+    })
+  }
+
+  getTeachers(){
+    let self = this
+    return new Promise((resolve, reject) =>{
+      request
+        .get(`https://classroom.googleapis.com/v1/courses/${self.id}/teachers`)
+        .set('Authorization', `Bearer ${self.client.accessToken}`)
+        .type('json')
+        .end((err, res) =>{
+          if(err) reject(err.stack);
+          if(res.body.teachers.length == 1){
+            resolve(new teacher(self.client, res.body.teachers[0]))
+          }else{
+            let array = []
+            for(let i = 0; i < res.body.teachers.length; i++){
+              array.push(new teacher(self.client, res.body.teachers[i]))
+            }
+            resolve(array)
+          }
+        })
     })
   }
 }
