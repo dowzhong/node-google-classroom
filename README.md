@@ -36,13 +36,10 @@ ___
 <a id=properties></a>
 ## Properties/Structures/Associated methods
 ___
-### Client
+### client
   * clientId - Your client id
   * clientSecret - Your client secret
   * refreshToken - Your refresh token
-  * acceptInvitation(id) - Accepts an invitation
-    * Parameters:
-      * id: The identifier for the invite you are accepting.
   * createCoures(name, section) - Creates a course (You'll have to accept the invitation to teach on a desktop.)
     * Parameters:
       * name: The name of the course

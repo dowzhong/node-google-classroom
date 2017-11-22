@@ -2,6 +2,7 @@ const request = require('superagent')
 const events = require('events')
 
 const course = require('./structures/course.js')
+const invitation = require('./structures/invitation.js')
 
 class client extends events{
   constructor(obj){
@@ -88,7 +89,15 @@ class client extends events{
       })
       .end((err, res) =>{
         if(err) reject(err.stack);
-        resolve(res.body)
+        if(res.body.invitations.length == 1){
+          resolve(new invitation(self.client, res.body.invitations[0]))
+        }else{
+          let array = []
+          for(let i = 0; i < res.body.invitations.length; i++){
+            array.push(new invitation(self.client, res.body.invitations[i]))
+          }
+          resolve(array)
+        }
       })
     })
   }
