@@ -65,5 +65,10 @@ ___
   * courseGroupEmail - The email address of a Google group containing all members of the course
   * teacherFolder - Information about a Drive Folder that is shared with all teachers of the course
   * guardiansEnabled - Whether or not guardian notifications are enabled for this course
-  
-
+  * createAnnouncement(announcement, materials) - Creates an announcment for the course
+    * Parameters:
+      * announcment: The announcment
+      * materials: An array of object of materials as documented [here](https://developers.google.com/classroom/reference/rest/v1/Material)
+  * createAssignment(assignment)
+    * Parameter
+      * assignment: An Assignment object as documented [here](https://developers.google.com/classroom/reference/rest/v1/courses.courseWork#CourseWork)
