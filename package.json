@@ -1,7 +1,7 @@
 {
   "name": "google-classroom",
   "version": "2.0.2",
-  "description": "",
+  "description": "A promise based Google Classroom wrapper.",
   "main": "index.js",
   "dependencies": {
     "superagent": "^3.8.1"
@@ -11,6 +11,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "cthuluhoop123",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cthuluhoop123/node-google-classroom.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cthuluhoop123/node-google-classroom/issues"
+  },
+  "homepage": "https://github.com/cthuluhoop123/node-google-classroom#readme"
 }
