@@ -96,3 +96,25 @@ ___
   * assignment - Assignment details
   * multipleChoiceQuestion - Multiple choice question details.
   *delete() - Deletes the assignment.
+___
+### invitation
+  * id - Identifier of classroom
+  * userId - Identifier of the invited user
+  * courseId - Identifier of the course to invite the user to
+  * role - Role to invite the user to have
+  * accept() - Accept the invitation
+___
+### student
+  * courseId - Identifier of the course
+  * userId - Identifier of the user
+  * profile - Global user information for the student
+  * studentWorkFolder - Information about a Drive Folder for this student's work in this course. Only visible to the student and domain administrators
+  * remove() - Removes the student from this course
+___
+### teacher
+  * courseId - Identifier of the course
+  * userId - Identifier of the user
+  * profile - Global user information for the teacher
+  * remove() - Removes the teacher from this course
+
+
