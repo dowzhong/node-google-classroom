@@ -89,7 +89,9 @@ class client extends events{
       })
       .end((err, res) =>{
         if(err) reject(err.stack);
-        if(res.body.invitations.length == 1){
+        if(res.body.invitations === undefined){
+          resolve([])
+        }else if(res.body.invitations.length == 1){
           resolve(new invitation(self.client, res.body.invitations[0]))
         }else{
           let array = []
